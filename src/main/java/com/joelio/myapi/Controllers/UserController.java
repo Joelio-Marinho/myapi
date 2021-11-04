@@ -5,7 +5,9 @@ import com.joelio.myapi.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -33,5 +35,12 @@ public class UserController {
         User newObj = userService.update(id,obj);
         return ResponseEntity.ok().body(newObj);
 
+    }
+
+    @PostMapping
+    public ResponseEntity<User> create(@RequestBody User obj){
+        User userTemp = userService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userTemp.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
 }

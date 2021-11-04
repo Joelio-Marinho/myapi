@@ -32,4 +32,9 @@ public class UserService {
 
         return userRepository.save(userTemp);
     }
+
+    public User create(User obj) {
+        obj.setId(null);
+        return userRepository.save(obj);
+    }
 }
