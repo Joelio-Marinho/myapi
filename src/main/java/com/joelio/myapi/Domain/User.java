@@ -13,7 +13,7 @@ import java.util.Objects;
 @Entity
 public class User implements Serializable {
 
-    private static final long serialVersionID = 1L;
+    private static final long serialVersionUID =1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +30,19 @@ public class User implements Serializable {
     @Length(min = 3 , max = 8)
     private String senha;
 
+    public User() {
+    }
+
     public User(Integer id, String nome, String login, String senha) {
         this.id = id;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 
     public String getNome() {
         return nome;

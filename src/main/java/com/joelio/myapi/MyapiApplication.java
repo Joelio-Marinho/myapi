@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 public class MyapiApplication implements CommandLineRunner {
 
@@ -24,7 +26,6 @@ public class MyapiApplication implements CommandLineRunner {
 
 		User u2 = new User(null, "maria bela", "maria ", "123");
 
-		userRepository.save(u1);
-		userRepository.save(u2);
+		userRepository.saveAll(Arrays.asList(u1,u2));
 	}
 }
